@@ -1,15 +1,19 @@
 package com.jcourse.tyukhtenev.lab2;
-import java.util.*;
 
-public class Invoker {
-    public static void main(String[] args) {
+import com.jcourse.tyukhtenev.lab2.commands.*;
+import java.io.FileNotFoundException;
+import java.util.Map;
+import java.util.Stack;
+import java.util.Scanner;
+import java.util.HashMap;
+
+public class StackCalc {
+    public static void main(String[] args) throws FileNotFoundException {
         Stack<Double> stack = new Stack<>();
-
-        Scanner scanner = new Scanner(System.in);
-        String s;
-
-        Map<String, Command> commands = new HashMap<>();
         Map<String, Double> vars = new HashMap<>();
+        Map<String, Command> commands = new HashMap<>();
+        String s;
+        Scanner scanner = null;
 
         commands.put("PLUS", new PlusCommand());
         commands.put("COMMENT", new CommentCommand());
@@ -22,11 +26,21 @@ public class Invoker {
         commands.put("SQRT", new SqrtCommand());
         commands.put("MINUS", new MinusCommand());
 
+        scanner = new Scanner(System.in);
+
+        vars.put("A", 2.);
+        vars.put("B", 3.);
+
         while (scanner.hasNextLine()) {
             s = scanner.nextLine();
             String str[] = s.split(" ");
             if (commands.containsKey(str[0])){
-                commands.get(str[0]).execute(stack, vars, str);
+                try {
+                    commands.get(str[0]).execute(stack, vars, str);
+                } catch (CalcException e){
+                    e.printStackTrace();
+                    System.out.println("Произошла ошибка!");
+                }
             } else
                 System.out.println("Нет такой команды");
         }
