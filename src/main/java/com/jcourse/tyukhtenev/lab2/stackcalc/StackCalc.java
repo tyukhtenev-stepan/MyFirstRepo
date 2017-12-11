@@ -1,11 +1,12 @@
-package com.jcourse.tyukhtenev.lab2;
+package com.jcourse.tyukhtenev.lab2.stackcalc;
 
-import com.jcourse.tyukhtenev.lab2.commands.*;
+import com.jcourse.tyukhtenev.lab2.stackcalc.commands.*;
+
 import java.io.FileNotFoundException;
-import java.util.Map;
-import java.util.Stack;
-import java.util.Scanner;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Stack;
 
 public class StackCalc {
     public static void main(String[] args) throws FileNotFoundException {

@@ -1,4 +1,4 @@
-package com.jcourse.tyukhtenev.lab2;
+package com.jcourse.tyukhtenev.lab2.stackcalc;
 
 public class CalcException extends Exception {
     public CalcException(){super();}

@@ -1,4 +1,4 @@
-package com.jcourse.tyukhtenev.lab1;
+package com.jcourse.tyukhtenev.lab1.numberguesser;
 
 import java.util.Scanner;
 

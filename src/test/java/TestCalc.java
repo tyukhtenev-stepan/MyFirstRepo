@@ -1,5 +1,5 @@
-import com.jcourse.tyukhtenev.lab2.Command;
-import com.jcourse.tyukhtenev.lab2.commands.PlusCommand;
+import com.jcourse.tyukhtenev.lab2.stackcalc.Command;
+import com.jcourse.tyukhtenev.lab2.stackcalc.commands.PlusCommand;
 import org.junit.*;
 import java.util.Map;
 import java.util.HashMap;

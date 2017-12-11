@@ -1,4 +1,4 @@
-package com.jcourse.tyukhtenev.lab1;
+package com.jcourse.tyukhtenev.lab2;
 import static java.lang.System.out;
 
 public class test{

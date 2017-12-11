@@ -1,6 +1,6 @@
-package com.jcourse.tyukhtenev.lab2.commands;
+package com.jcourse.tyukhtenev.lab2.stackcalc.commands;
 
-import com.jcourse.tyukhtenev.lab2.Command;
+import com.jcourse.tyukhtenev.lab2.stackcalc.Command;
 
 import java.util.Map;
 import java.util.Stack;

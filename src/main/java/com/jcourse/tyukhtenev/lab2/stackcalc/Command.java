@@ -1,4 +1,4 @@
-package com.jcourse.tyukhtenev.lab2;
+package com.jcourse.tyukhtenev.lab2.stackcalc;
 
 import java.util.Map;
 import java.util.Stack;
