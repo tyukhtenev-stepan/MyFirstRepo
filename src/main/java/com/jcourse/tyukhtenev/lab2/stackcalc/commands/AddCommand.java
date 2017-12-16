@@ -5,12 +5,18 @@ import com.jcourse.tyukhtenev.lab2.stackcalc.Command;
 import java.util.Map;
 import java.util.Stack;
 
-public class CommentCommand implements Command {
+public class AddCommand implements Command {
     public void execute(Stack<Double> stack, Map<String, Double> defineMap, String s) {
-        System.out.println(s);
+        Double a;
+        Double b;
+        System.out.println("+");
+
+        a = stack.pop();
+        b = stack.pop();
+        stack.push(a + b);
     }
 
     public int getEnoughStackDepth() {
-        return 0;
+        return 2;
     }
 }

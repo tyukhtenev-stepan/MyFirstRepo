@@ -1,12 +1,16 @@
-package com.jcourse.tyukhtenev.lab2.stackcalc.commands;
+package com.jcourse.tyukhtenev.lab3.stackcalc2.commands;
 
-import com.jcourse.tyukhtenev.lab2.stackcalc.Command;
+import com.jcourse.tyukhtenev.lab3.stackcalc2.Arg;
+import com.jcourse.tyukhtenev.lab3.stackcalc2.Command;
+import com.jcourse.tyukhtenev.lab3.stackcalc2.In;
 
-import java.util.Map;
 import java.util.Stack;
 
 public class SqrtCommand implements Command {
-    public void execute(Stack<Double> stack, Map<String, Double> defineMap, String s) {
+    @In(getArg = Arg.STACK)
+    private Stack<Double> stack;
+
+    public void execute(String string) {
         double a;
         System.out.println("sqrt");
         if (stack.peek() < 0) {
@@ -18,7 +22,7 @@ public class SqrtCommand implements Command {
         stack.push(StrictMath.sqrt(a));
     }
 
-    public int getEnoughStackDepth() {
+    public int getEnoughParams() {
         return 1;
     }
 }

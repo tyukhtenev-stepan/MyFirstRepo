@@ -1,14 +1,22 @@
-package com.jcourse.tyukhtenev.lab2.stackcalc.commands;
+package com.jcourse.tyukhtenev.lab3.stackcalc2.commands;
 
-import com.jcourse.tyukhtenev.lab2.stackcalc.Command;
+import com.jcourse.tyukhtenev.lab3.stackcalc2.Arg;
+import com.jcourse.tyukhtenev.lab3.stackcalc2.Command;
+import com.jcourse.tyukhtenev.lab3.stackcalc2.In;
 
 import java.util.Map;
 import java.util.Stack;
 
 public class PushCommand implements Command {
-    public void execute(Stack<Double> stack, Map<String, Double> defineMap, String s) {
+    @In(getArg = Arg.STACK)
+    private Stack<Double> stack;
+
+    @In(getArg = Arg.VARIABLES)
+    private Map<String, Double> variables;
+
+    public void execute(String string) {
         int i;
-        String[] words = s.split(" ");
+        String[] words = string.split(" ");
         for (String str : words) {
             System.out.print(str + " ");
         }
@@ -22,8 +30,8 @@ public class PushCommand implements Command {
 
         for (i = 1; i < words.length; i++)
             try {
-                if (defineMap.containsKey(words[i])) {
-                    words[i] = defineMap.get(words[i]).toString();
+                if (variables.containsKey(words[i])) {
+                    words[i] = variables.get(words[i]).toString();
                 }
                 stack.push(Double.parseDouble(words[i]));
             } catch (NumberFormatException e) {
@@ -31,7 +39,7 @@ public class PushCommand implements Command {
             }
     }
 
-    public int getEnoughStackDepth() {
+    public int getEnoughParams() {
         return 0;
     }
 }

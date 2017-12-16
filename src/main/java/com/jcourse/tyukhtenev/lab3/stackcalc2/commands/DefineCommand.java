@@ -1,13 +1,17 @@
-package com.jcourse.tyukhtenev.lab2.stackcalc.commands;
+package com.jcourse.tyukhtenev.lab3.stackcalc2.commands;
 
-import com.jcourse.tyukhtenev.lab2.stackcalc.Command;
+import com.jcourse.tyukhtenev.lab3.stackcalc2.Arg;
+import com.jcourse.tyukhtenev.lab3.stackcalc2.Command;
+import com.jcourse.tyukhtenev.lab3.stackcalc2.In;
 
 import java.util.Map;
-import java.util.Stack;
 
 public class DefineCommand implements Command {
-    public void execute(Stack<Double> stack, Map<String, Double> defineMap, String s) {
-        String words[] = s.split(" ");
+    @In(getArg = Arg.VARIABLES)
+    private Map<String, Double> defineMap;
+
+    public void execute(String string) {
+        String words[] = string.split(" ");
 
         if (words.length < 3) {
             System.out.println("Недостаточно параметров для выполнения операции.");
@@ -32,7 +36,7 @@ public class DefineCommand implements Command {
         }
     }
 
-    public int getEnoughStackDepth() {
+    public int getEnoughParams() {
         return 0;
     }
 }
