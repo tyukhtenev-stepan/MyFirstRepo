@@ -5,14 +5,14 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class StackCalc2 {
-    static Boolean isDebug = false; // Дебаг режим
+    static Boolean isDebug = true; // Дебаг режим
 
     public static void main(String[] args) throws IOException {
         String s; // строка для хранения конкретной команды
 
         for (String arg : args) {
             if (arg.equals("debug")) {
-                isDebug = true; // устанавливаем дебаг режим
+                isDebug = false; // устанавливаем дебаг режим
             }
         }
 
