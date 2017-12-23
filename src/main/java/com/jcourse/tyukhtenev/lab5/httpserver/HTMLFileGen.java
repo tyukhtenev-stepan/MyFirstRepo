@@ -6,26 +6,34 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class HTMLFileGen {
-    private String[] args;
+    String[] args;
+    boolean flag;
 
-    public HTMLFileGen(String[] line) {
+    public HTMLFileGen(String[] line, boolean flag) {
         args = line;
+        this.flag = flag;
     }
 
-    public void generateHTML(){
+    public String generate(){
 
         String output = "";
         if (args.length < 1) {
             System.out.println("Не указана директория");
-            return;
+            return "args.length < 1";
         }
 
-        File folder = new File(args[1]);
+        File folder;
+        if (!flag) {
+            folder = new File("C:\\JavaProjects\\MyFirstRepo");//args[1]
 //    HTMLFileGenerator htmlFileGenerator = new HTMLFileGenerator();
+        } else {
+
+            folder = new File("C:\\JavaProjects\\MyFirstRepo"+args[1].replace("/", "\\"));
+        }
 
         try {
             output = this.generateHTML(folder);
-            System.out.println(output);
+//        System.out.println(output);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -40,6 +48,7 @@ public class HTMLFileGen {
         } catch (IOException e) {
             System.out.println("Не могу сохранить файл");
         }
+        return output;
     }
 
     private String generateHTML(File folder) throws IOException {
@@ -54,7 +63,7 @@ public class HTMLFileGen {
         htmlPage.append("<hr>\n");
         htmlPage.append("<table cellpadding=\"1\"> \n");
         htmlPage.append("<tr><td><h3>Имя</h3></td><td><h3>Размер</h3></td><td><h3>Последнее изменение</h3></td></tr>\n");
-        htmlPage.append("<tr><td>" + "<a href=" + '"').append("..").append('"').append(">...</a></td><td></td><td></td></tr>\n");
+        htmlPage.append("<tr><td>" + "<a href=\"").append("..").append('"').append(">...</a></td><td></td><td></td></tr>\n");
 
         File[] files = folder.listFiles();
 
@@ -79,7 +88,7 @@ public class HTMLFileGen {
         if (files != null) {
             for (File file : files) {
 
-                htmlPage.append("<tr><td><a href=" + '"').append(file.getName()).append('"').append(">").append(file.getName()).append("</a></td>");
+                htmlPage.append("<tr><td><a href=\"").append(file.getName()).append(file.isDirectory()?"/":"").append('"').append(">").append(file.getName()).append("</a></td>");
                 htmlPage.append("<td>");
                 if (file.isFile()) {
                     htmlPage.append(file.length()).append(" Byte");
